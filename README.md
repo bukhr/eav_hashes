@@ -127,6 +127,16 @@ migration generator:
 
     $ rails generate eav_migration Widget foobar bar_foo
 
+Support for Ruby 3
+--
+
+Ruby 3 uses [Psych.safe_load](https://www.rubydoc.info/stdlib/psych/Psych.safe_load) with a limited list of permitted classes to deserialize your stored values. If you need more classes like `Date`, configure those additional classes in an initializer.
+
+```ruby
+ActiveRecord::EavHashes.configure do |config|
+    config.permitted_classes = [Date]
+end
+```
 
 What's the catch?
 -

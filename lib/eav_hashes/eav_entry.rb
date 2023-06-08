@@ -107,7 +107,7 @@ module ActiveRecord
 
         case value_type
           when SUPPORTED_TYPES[:Object] # or Hash, Array, etc.
-            @value = YAML::load @value
+            @value = YAML::safe_load(@value, permitted_classes: EavHashes.configuration.permitted_classes)
           when SUPPORTED_TYPES[:Symbol]
             @value = @value.to_sym
           when SUPPORTED_TYPES[:Integer] # or Fixnum, Bignum

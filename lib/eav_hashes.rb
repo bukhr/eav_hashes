@@ -1,4 +1,5 @@
 require "eav_hashes/util"
+require "eav_hashes/configuration"
 require "eav_hashes/eav_entry"
 require "eav_hashes/eav_hash"
 require "eav_hashes/activerecord_extension"

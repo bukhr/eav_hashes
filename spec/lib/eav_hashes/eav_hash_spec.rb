@@ -6,6 +6,13 @@ describe "EavHash/EavEntry" do
     let (:p2) { Product.find_by_name("Product 2") }
     let (:p3) { Product.find_by_name("Product 3") }
 
+    before do 
+        ActiveRecord::EavHashes.configure do |config|
+            # This classes are not in list of default permitted classes in YAML.safe_load
+            config.permitted_classes = [Symbol, CustomTestObject]
+        end
+    end
+
     it "deletes an EAV row when its value is set to nil" do
         p3_id = p3.id
         p3.tech_specs[:delete_me] = nil
