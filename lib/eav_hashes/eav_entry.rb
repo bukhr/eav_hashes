@@ -30,7 +30,8 @@ module ActiveRecord
           :Boolean    => 6, # For code readability
           :TrueClass  => 6,
           :FalseClass => 6,
-          :Object     => 7 # anything else (including Hashes, Arrays) will be serialized to yaml and saved as Object
+          :Object     => 7, # anything else (including Hashes, Arrays) will be serialized to yaml and saved as Object
+          :BigDecimal => 8,
       }
 
       # Does some sanity checks.
@@ -120,6 +121,8 @@ module ActiveRecord
             @value = Rational @value
           when SUPPORTED_TYPES[:Boolean]
             @value = (@value == "true")
+          when SUPPORTED_TYPES[:BigDecimal]
+            @value = BigDecimal(@value)
           else
             @value
         end
