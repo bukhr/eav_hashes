@@ -12,7 +12,8 @@ p.tech_specs << {
   "An Object"   => CustomTestObject.new(42),
   "False"       => false,
   "True"        => true,
-  :symbolic_key => "This key is SYMBOLIC!!!!!1!!"
+  :symbolic_key => "This key is SYMBOLIC!!!!!1!!",
+  "A BigDecimal"=> BigDecimal("3.888")
 }
 
 p2 = Product.new

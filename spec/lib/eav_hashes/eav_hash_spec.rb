@@ -91,6 +91,10 @@ describe "EavHash/EavEntry" do
         it "preserves user-defined value types" do
             expect(p1.tech_specs["An Object"]).to be_a_kind_of CustomTestObject
         end
+
+        it "preserves BigDecimal value types" do
+            expect(p1.tech_specs["A BigDecimal"]).to be_a_kind_of BigDecimal
+        end
     end
 
     describe "preserves values between serialization and deserialization" do
@@ -136,6 +140,10 @@ describe "EavHash/EavEntry" do
 
         it "preserves user-defined values" do
             expect(p1.tech_specs["An Object"].test_value).to eq(42)
+        end
+
+        it "preserves BigDecimal values" do
+            expect(p1.tech_specs["A BigDecimal"]).to eq(3.888)
         end
     end
 
